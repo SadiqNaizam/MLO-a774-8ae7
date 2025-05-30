@@ -1,57 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 210 20% 98%; /* PRD: #F9FAFB */
+    --foreground: 215 27.9% 16.9%; /* PRD: #1F2937 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* PRD: #FFFFFF (surface) */
+    --card-foreground: 215 27.9% 16.9%; /* PRD: #1F2937 (primaryText for card text) */
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%; /* PRD: #FFFFFF (surface) */
+    --popover-foreground: 215 27.9% 16.9%; /* PRD: #1F2937 (primaryText for popover text) */
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 203 70.6% 50.6%; /* PRD: #299CDB (accentBlue) */
+    --primary-foreground: 0 0% 100%; /* Assumed white for contrast on accentBlue */
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 210 20% 95.8%; /* Derived: slightly darker than background, e.g., for secondary cards/elements */
+    --secondary-foreground: 216 11.2% 46.1%; /* PRD: #6B7280 (secondaryText) */
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 13.8% 91%; /* PRD: #E5E7EB (border, for muted backgrounds/dividers) */
+    --muted-foreground: 216 11.2% 46.1%; /* PRD: #6B7280 (secondaryText, for muted text) */
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 203 100% 95.9%; /* Derived: Lighter shade of accentBlue (e.g. #EBF8FF) for hover/active states */
+    --accent-foreground: 203 70.6% 50.6%; /* PRD: #299CDB (accentBlue, for text on accent background) */
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 11 86.2% 61.2%; /* PRD: #F06548 (accentRed) */
+    --destructive-foreground: 0 0% 100%; /* Assumed white for contrast on accentRed */
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13.8% 91%; /* PRD: #E5E7EB */
+    --input: 220 13.8% 91%; /* PRD: #E5E7EB (input border typically same as border) */
+    --ring: 203 70.6% 50.6%; /* PRD: #299CDB (accentBlue, for focus rings) */
 
-    --radius: 0.5rem;
+    --radius: 0.5rem; /* Kept existing: compatible with PRD's rounded-md via tailwind config */
 
-    --sidebar-background: 0 0% 98%;
+    /* Sidebar variables from PRD */
+    --sidebar-background: 220 18.8% 32%; /* PRD: #424C60 */
+    --sidebar-foreground: 0 0% 100%; /* Assumed white text for contrast on dark sidebar */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Font variable from PRD */
+    --font-sans: "Inter";
   }
 
-  .dark {
+  .dark { /* Unchanged as PRD does not specify dark theme values. Preserving existing dark theme. */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -79,6 +72,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+    /* Existing dark sidebar variables are kept as PRD is silent on dark theme specifics for sidebar */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -97,5 +91,8 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
