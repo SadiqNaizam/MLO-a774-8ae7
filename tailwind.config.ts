@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
 	darkMode: ["class"],
@@ -54,20 +55,23 @@ export default {
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
-				}
+					foreground: 'hsl(var(--sidebar-foreground))'
+          // Removed other sidebar color states as their CSS variables are not defined for light mode in PRD
+				},
+        // PRD specific accent colors not fitting into Shadcn's typical semantic names
+        'accent-yellow': '#F59E0B',
+        'accent-green': '#0AB39C',
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+        // Existing configuration is compatible with PRD's `rounded-md` (via `md`) and `rounded` (via `sm`)
+        // when --radius is 0.5rem.
+				lg: 'var(--radius)', // 0.5rem
+				md: 'calc(var(--radius) - 2px)', // 0.375rem (effectively rounded-md)
+				sm: 'calc(var(--radius) - 4px)' // 0.25rem (effectively rounded)
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
